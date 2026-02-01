@@ -16,5 +16,7 @@ public class vowels_ifelse {
         {
             System.out.println(ch+" is not an vowel");
         }
+
+        sc.close();
     }
 }
