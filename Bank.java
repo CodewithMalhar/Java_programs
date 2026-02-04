@@ -11,7 +11,7 @@ public class Bank {
     static double balance;
     static int pin;
     static ArrayList<String> transaction = new ArrayList<String>(); 
-    static LocalDateTime a = LocalDateTime.now();
+    static LocalDateTime a ;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         welcomeLoop :
@@ -43,6 +43,7 @@ public class Bank {
                     pancard = new Scanner(System.in).next();
                     System.out.println("Enter a amount :");
                     balance = new Scanner(System.in).nextDouble();
+                    a = LocalDateTime.now();
                     transaction.add("DEPOSIT (CREATION) : "+balance+".rs "+a.getHour() + ":" + a.getMinute() + ":" + a.getSecond());
                     System.out.println("Pin :");
                     pin = new Scanner(System.in).nextInt();
@@ -79,6 +80,7 @@ public class Bank {
                                     System.out.println("Enter desposit amount : ");
                                     double deptAmt = new Scanner(System.in).nextDouble();
                                     balance += deptAmt;
+                                    a = LocalDateTime.now();
                                     transaction.add("DEPOSIT :"+deptAmt+"  "+a.getHour()+":"+a.getMinute()+":"+a.getSecond());
                                     System.out.println("\n AMOUNT DESPOSIT SCUCCESFULLY \n");
                                     break ;
@@ -93,6 +95,7 @@ public class Bank {
                                     {
                                         if (wdrwAmt<=balance) {
                                             balance -= wdrwAmt;
+                                            a = LocalDateTime.now();
                                             transaction.add("WITHDRAW : "+wdrwAmt+"  "+a.getHour()+":"+a.getMinute()+":"+a.getSecond());
                                             System.out.println("\n AMOUNT DEBITED SCUCESSFULLY \n");
                                         }
