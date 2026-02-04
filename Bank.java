@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.*;
 
 public class Bank {
     static String name;
@@ -10,6 +11,7 @@ public class Bank {
     static double balance;
     static int pin;
     static ArrayList<String> transaction = new ArrayList<String>(); 
+    static LocalDateTime a = LocalDateTime.now();
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         welcomeLoop :
@@ -41,7 +43,7 @@ public class Bank {
                     pancard = new Scanner(System.in).next();
                     System.out.println("Enter a amount :");
                     balance = new Scanner(System.in).nextDouble();
-                    transaction.add("DEPOSIT (CREATION) : "+balance);
+                    transaction.add("DEPOSIT (CREATION) : "+balance+".rs "+a.getHour() + ":" + a.getMinute() + ":" + a.getSecond());
                     System.out.println("Pin :");
                     pin = new Scanner(System.in).nextInt();
                     System.out.println("*** ACCOUNT CREATED SUCCESSFULLY ***");
@@ -77,7 +79,7 @@ public class Bank {
                                     System.out.println("Enter desposit amount : ");
                                     double deptAmt = new Scanner(System.in).nextDouble();
                                     balance += deptAmt;
-                                    transaction.add("DEPOSIT :"+deptAmt);
+                                    transaction.add("DEPOSIT :"+deptAmt+"  "+a.getHour()+":"+a.getMinute()+":"+a.getSecond());
                                     System.out.println("\n AMOUNT DESPOSIT SCUCCESFULLY \n");
                                     break ;
                                 }
@@ -91,7 +93,7 @@ public class Bank {
                                     {
                                         if (wdrwAmt<=balance) {
                                             balance -= wdrwAmt;
-                                            transaction.add("WITHDRAW : "+wdrwAmt);
+                                            transaction.add("WITHDRAW : "+wdrwAmt+"  "+a.getHour()+":"+a.getMinute()+":"+a.getSecond());
                                             System.out.println("\n AMOUNT DEBITED SCUCESSFULLY \n");
                                         }
                                         else
@@ -146,7 +148,7 @@ public class Bank {
                 }
                 default:
                     {
-                        System.out.println("\n INVA");
+                        System.out.println("\n INVALID INPUT ");
                     }
             }
         }
